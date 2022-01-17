@@ -1,0 +1,387 @@
+.modal-container {
+  position: relative;
+  background-color: $header-text-color;
+
+  @media screen and (max-width: 767px) {
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    // height: 100vh;
+  }
+
+  @media screen and (min-width: 320px) {
+    width: 320px;
+  }
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    padding-top: 60px;
+    padding-left: 75px;
+    padding-right: 75px;
+    padding-bottom: 60px;
+    width: 768px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    padding-left: 71px;
+    padding-right: 71px;
+    width: 1024px;
+  }
+}
+
+// Trailer
+.modal-content__trailer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  background-color: $main-text-color;
+  visibility: hidden;
+  z-index: 1002;
+  transform: scale(0.9);
+  transition: opacity var(--animation-duration) var(--timing-function),
+    transform var(--animation-duration) var(--timing-function),
+    visibility var(--animation-duration) var(--timing-function);
+
+  &.show-trailer-modal {
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity var(--animation-duration) var(--timing-function),
+      transform var(--animation-duration) var(--timing-function);
+  }
+
+  .modal-content__trailer-btn {
+    width: 40px;
+    height: 40px;
+    background-color: red;
+    border: none;
+    border-radius: 50%;
+    outline: none;
+    transform: scale(1);
+    transition: transform var(--animation-duration) var(--timing-function);
+
+    &:hover {
+      transform: scale(1.5);
+      transition: transform var(--animation-duration) var(--timing-function);
+    }
+  }
+}
+
+// Poster
+.modal-section__thumb {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-radius: 5px;
+
+  @media screen and (max-width: 767px) {
+    // height: 416px;
+    margin-bottom: 30px;
+  }
+
+  @media screen and (min-width: 768px) {
+    margin-right: 30px;
+    width: 294px;
+    // height: 416px;
+    overflow: hidden;
+  }
+
+  @media screen and (min-width: 1024px) {
+    display: flex;
+    width: 426px;
+    height: 514px;
+    overflow: hidden;
+    align-items: center;
+  }
+
+  // Trailer Button
+  .trailer-btn__overlay {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+
+    background-color: rgba(0, 0, 0, 0.6);
+    transition: opacity var(--animation-duration) var(--timing-function);
+
+    .trailer-btn {
+      font-size: 80px;
+      transform: scale(0.8);
+      transition: opacity var(--animation-duration) var(--timing-function),
+        transform var(--animation-duration) var(--timing-function);
+    }
+  }
+
+  &:hover .trailer-btn__overlay {
+    opacity: 1;
+
+    .trailer-btn {
+      transform: scale(1.3);
+      transition: color var(--animation-duration) var(--timing-function),
+        transform var(--animation-duration) var(--timing-function);
+
+      &:hover {
+        color: #ffffff;
+        cursor: pointer;
+        transform: scale(1.6);
+        transition: color var(--animation-duration) var(--timing-function),
+          transform var(--animation-duration) var(--timing-function);
+      }
+    }
+  }
+
+  // Image
+  .modal-section__image {
+    width: 100%;
+    height: auto;
+  }
+}
+
+// Meta
+.modal-section__meta {
+  @media screen and (min-width: 768px) {
+    width: 294px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: 426px;
+  }
+
+  .modal-meta__title {
+    margin-bottom: 20px;
+    font-family: $primary-font;
+    text-transform: uppercase;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.15;
+    color: $main-text-color;
+
+    @media screen and (min-width: 768px) {
+      font-size: 30px;
+      line-height: 1.17;
+    }
+  }
+
+  // Info
+  .modal-meta__info {
+    display: flex;
+    margin-bottom: 20px;
+
+    .modal-info__list {
+      &:nth-child(1) {
+        width: 40%;
+
+        @media screen and (min-width: 1024px) {
+          width: 35%;
+        }
+      }
+
+      &:nth-child(2) {
+        width: 60%;
+
+        @media screen and (min-width: 1024px) {
+          width: 65%;
+        }
+      }
+
+      & > li {
+        font-family: $primary-font;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 1.33;
+        color: $about-text-color;
+
+        &:not(:last-child) {
+          margin-bottom: 10px;
+        }
+      }
+
+      &:nth-child(2) > li {
+        &:not(:first-child) {
+          color: $main-text-color;
+        }
+
+        &:nth-child(1) span:nth-child(1) {
+          display: inline-block;
+          padding: 1px 10px;
+          margin-right: 3px;
+          background: $accent-color;
+          border-radius: 5px;
+          color: $header-text-color;
+        }
+
+        &:nth-child(1) span:nth-child(2) {
+          display: inline-block;
+          padding: 1px 4px;
+          margin-left: 3px;
+          color: $main-text-color;
+          background: $footer-background-color;
+          border-radius: 5px;
+        }
+      }
+
+      &:nth-child(2) > li:nth-child(3) {
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  // Description
+  .modal-meta__title.description {
+    margin-bottom: 10px;
+    font-size: 12px;
+    line-height: 1.33;
+  }
+
+  .modal-meta__text {
+    margin-bottom: 40px;
+    font-family: $primary-font;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.67;
+    color: $main-text-color;
+
+    @media screen and (min-width: 768px) {
+      margin-bottom: 20px;
+    }
+  }
+
+  // Buttons
+  .modal-meta__btn-wrap {
+    display: flex;
+
+    @media screen and (max-width: 767px) {
+      padding-bottom: 40px;
+    }
+
+    & > button {
+      width: 50%;
+      padding: 14px 10px 12px;
+      font-family: $primary-font;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 1.33;
+      text-transform: uppercase;
+      border-radius: 5px;
+
+      @media screen and (min-width: 1024px) {
+        max-width: 136px;
+      }
+
+      &:nth-child(1) {
+        margin-right: 15px;
+        color: $header-text-color;
+        background-color: $accent-color;
+        border: none;
+
+        &:hover {
+          color: $main-text-color;
+          border: 1px solid $main-text-color;
+          background-color: $header-text-color;
+        }
+
+        &.active-modal-btn {
+          cursor: not-allowed;
+          background-color: #f2f2f2;
+          color: rgba(148, 152, 155, 0.5);
+          border: solid 2px transparent;
+          box-shadow: none;
+        }
+      }
+
+      &:nth-child(2) {
+        color: $main-text-color;
+        border: 1px solid $main-text-color;
+        background-color: $header-text-color;
+
+        &:hover {
+          margin-right: 15px;
+          color: $header-text-color;
+          background-color: $accent-color;
+          box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
+          border: 1px solid transparent;
+        }
+
+        &.active-modal-btn {
+          cursor: not-allowed;
+          background-color: #f2f2f2;
+          color: rgba(148, 152, 155, 0.5);
+          border: solid 2px transparent;
+          box-shadow: none;
+        }
+      }
+    }
+  }
+
+  // Similar
+  .modal-meta_similar-movies {
+    padding-top: 20px;
+
+    & .similar-title {
+      margin-bottom: 18px;
+    }
+  }
+
+  .modal-meta_similar-movies .film-list-li {
+    width: 78px;
+
+    & .movie-link {
+      cursor: initial;
+    }
+
+    @media screen and (max-width: 767px) {
+      width: 100%;
+    }
+  }
+
+  .modal-meta_similar-movies-list {
+    justify-content: start;
+
+    & li {
+      margin-right: 15px;
+    }
+  }
+}
+
+// ==============================================================================
+
+.btn-remove-movie {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  // margin-left: 15px;
+  background: #fff;
+
+  border-radius: 5px;
+  border: 1px solid black;
+  transition: background var(--animation-duration) var(--timing-function),
+    color var(--animation-duration) var(--timing-function),
+    border var(--animation-duration) var(--timing-function);
+}
+
+.btn-remove-movie:hover,
+.btn-remove-movie:focus {
+  background: #ff6b08;
+  color: #fff;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+/* Icon size */
+button span[class='material-icons'] {
+  font-size: 24px;
+}

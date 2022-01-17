@@ -1,0 +1,114 @@
+// modalHandler
+:root {
+  --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  --animation-duration: 300ms;
+}
+
+/* Backdrop */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+
+  z-index: 1001;
+  overflow-y: scroll;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--animation-duration) var(--timing-function),
+    visibility var(--animation-duration) var(--timing-function);
+
+  // @media screen and (max-width: 414px) {
+  //   background-color: $header-text-color;
+  // }
+
+  @media screen and (min-width: 768px) {
+    align-items: center;
+  }
+}
+
+body {
+  &.show-modal-film,
+  &.show-modal-signup,
+  &.show-modal-footer {
+    overflow: hidden;
+  }
+
+  &.show-modal-film .backdrop,
+  &.show-modal-signup .backdrop,
+  &.show-modal-footer .backdrop {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: initial;
+  }
+
+  &.show-modal-film .backdrop {
+    @media screen and (max-width: 767px) {
+      align-items: start;
+    }
+  }
+
+  &.show-modal-signup .modal,
+  &.show-modal-footer .modal {
+    transform: scale(1);
+  }
+
+  &.show-modal-film .modal {
+    transform: scale(1);
+
+    @media screen and (max-width: 767px) {
+      background-color: $header-text-color;
+      min-height: 100%;
+    }
+  }
+}
+
+.modal {
+  display: flex;
+  justify-content: center;
+  transform: scale(1.1);
+  transition: transform var(--animation-duration) var(--timing-function);
+}
+
+// .close-modal {
+//   position: absolute;
+//   top: 0;
+//   right: 20px;
+//   width: 40px;
+//   height: 40px;
+// }
+
+.close-modal {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  width: 40px;
+  height: 40px;
+  font-size: 30px;
+  line-height: 1.2;
+  color: $header-text-color;
+  background-color: $accent-color;
+  border: none;
+  border-radius: 50%;
+  transition: color 100ms ease-in, background-color 100ms ease-in;
+
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+}
+
+.modal-meta_similar-movies-list {
+  justify-content: start;
+
+  & li {
+    margin-right: 15px;
+    cursor: pointer;
+  }
+}

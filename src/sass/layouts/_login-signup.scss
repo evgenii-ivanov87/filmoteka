@@ -1,0 +1,106 @@
+/* variables */
+:root {
+  --primary: #4f515a;
+  --secondary: #ebebeb;
+  --warning: #da0f41;
+}
+
+/* base styles  */
+#signup-form,
+#login-form {
+  margin: 0;
+  padding: 0;
+  // font-family: 'Nunito', sans-serif;
+  color: var(--primary);
+}
+body {
+  background: #fafafa;
+}
+a {
+  text-decoration: none;
+}
+
+// Form Wrapper
+.modal-form__wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding-top: 60px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 60px;
+  width: 100vw;
+  max-width: 440px;
+}
+
+/* buttons */
+#signup-form > button,
+#login-form > button {
+  background: var(--secondary);
+  border-radius: 8px;
+  border: 0;
+  padding: 8px 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-block;
+  margin-bottom: 15px;
+
+  &:hover {
+    background: var(--primary);
+    color: white;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    color: var(--primary);
+    background: var(--secondary);
+    cursor: not-allowed;
+  }
+}
+
+/* forms */
+form#signup-form,
+form#login-form {
+  width: 100%;
+
+  // max-width: 400px;
+  // margin: 0 auto;
+
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 1px 2px 3px rgba(50, 50, 50, 0.05);
+  border: 1px solid var(--secondary);
+  background: white;
+}
+
+#signup-form > input,
+#login-form > input {
+  border: 0;
+  border-bottom: 1px solid var(--secondary);
+  padding: 10px;
+  outline: none;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 20px auto;
+}
+
+/* error text */
+#signup-form > .error,
+#login-form > .error {
+  color: var(--warning);
+  font-size: 14px;
+  margin: 16px 0;
+}
+//================================
+.welcome {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.welcome span {
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
+}
